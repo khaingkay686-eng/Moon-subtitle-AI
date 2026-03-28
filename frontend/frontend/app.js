@@ -6,7 +6,7 @@ async function uploadFile() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch(https://moo-subtitle-ai-backend.onrender.com/transcribe"), {
+    const res = await fetch(https://mo-subtitle-ai-backend.onrender.com/transcribe"), {
         method: "POST",
         body: formData
     });
