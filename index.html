@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Moon Subtitle AI</title>
+  <style>
+    body{
+      margin:0;
+      font-family:sans-serif;
+      background:#0b1220;
+      color:white;
+      text-align:center;
+    }
+    header{
+      padding:20px;
+      font-size:22px;
+      color:gold;
+    }
+    .box{
+      margin:20px;
+      padding:20px;
+      background:#111a2e;
+      border-radius:20px;
+      box-shadow:0 0 10px rgba(0,0,0,0.5);
+    }
+    button{
+      padding:15px;
+      width:90%;
+      margin-top:10px;
+      background:gold;
+      border:none;
+      border-radius:20px;
+      font-size:18px;
+    }
+    textarea{
+      width:90%;
+      height:200px;
+      margin-top:10px;
+      border-radius:10px;
+      background:#000;
+      color:#0f0;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>🌙 Moon Subtitle AI</header>
+
+<div class="box">
+  <input type="file" id="file">
+  <button onclick="upload()">ဗီဒီယိုတင်ရန်</button>
+
+  <textarea id="output" placeholder="SRT ထွက်လာမယ်..."></textarea>
+</div>
+
+<script>
+async function upload(){
+  let file = document.getElementById("file").files[0];
+
+  let formData = new FormData();
+  formData.append("file", file);
+
+  let res = await fetch("https://YOUR-BACKEND.onrender.com/transcribe", {
+    method:"POST",
+    body:formData
+  });
+
+  let data = await res.text();
+  document.getElementById("output").value = data;
+}
+</script>
+
+</body>
+</html>
